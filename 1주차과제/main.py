@@ -11,7 +11,8 @@ def parse_timestamp(line):
         return timestamp
     except ValueError:
         # 예외 처리: 파싱 실패 시 None 반환 (파일 처리 예외를 처리하는 부분)
-        return None
+        return None 
+# 안써도ㅠ됨
 
 def read_and_print_log():
     # 이 함수는 로그 파일 mission_computer_main.log를 열어 내용을 읽고,
