@@ -27,6 +27,12 @@ class DummySensor:
         #현재의 센서 데이터 반환
         #보너스 과제로, 현재 날짜와 시간 및 각 센서 값을 개별 줄에 출력하고,
         #'sensor_log.txt' 파일에 로그로 남기기
+        
+        # 센서 데이터가 초기화되지 않은 경우, set_env()를 자동으로 호출합니다.
+        if any(value is None for value in self.env_values.values()):
+            print("경고: 센서 데이터가 초기화되지 않았습니다. set_env()를 호출합니다.")
+            self.set_env()
+        
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         # 각 센서 항목을 "키: 값" 형식으로 변환하여 개별 줄로 만듬
         sensor_lines = [f'{key}: {value}' for key, value in self.env_values.items()]
