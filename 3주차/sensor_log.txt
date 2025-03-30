@@ -1,0 +1,8 @@
+2025-03-30 20:34:59, 22.69, 4.03, 57.07, 538.01, 0.049, 6.71
+2025-03-30 20:40:39
+mars_base_internal_temperature: 25.07
+mars_base_external_temperature: 6.56
+mars_base_internal_humidity: 54.58
+mars_base_external_illuminance: 646.44
+mars_base_internal_co2: 0.068
+mars_base_internal_oxygen: 6.64
