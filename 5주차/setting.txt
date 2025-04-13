@@ -1,0 +1,5 @@
+operating_system
+os_version
+cpu_type
+cpu_cores
+memory_size_gb
