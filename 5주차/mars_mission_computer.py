@@ -1,7 +1,7 @@
-import platform
-import os
+import platform #운영체제, OS 버전, CPU 타입 등 시스템 관련 정보
+import os #CPU 코어 수를 가져오거나 파일 경로의 존재 여부를 확인
 import json
-import subprocess
+import subprocess #메모리 크기, CPU 사용량, 등 정보
 from datetime import datetime
 
 class MissionComputer:
@@ -30,10 +30,11 @@ class MissionComputer:
         'cpu_type',
         'cpu_cores',
         'memory_size_gb'
-    ]
+    ] #설정 파일이 존재하지 않을 때, 기본 출력 항목으로 사용할 항목들을 정의
     
     def __init__(self):
         self.info = {}
+        #시스템 정보를 저장할 빈 딕셔너리 self.info를 초기화
 
     def _create_default_settings_file(self, setting_file):
         """설정 파일이 없을 경우, DEFAULT_SETTINGS를 포함하는 기본 설정 파일을 생성"""
@@ -41,6 +42,7 @@ class MissionComputer:
             with open(setting_file, 'w', encoding='utf-8') as f:
                 for item in self.DEFAULT_SETTINGS:
                     f.write(item + "\n")
+                    #DEFAULT_SETTINGS 리스트의 각 항목을 파일에 한 줄씩 기록
             print(f'기본 설정 파일 "{setting_file}" 생성 완료.')
         except Exception as e:
             print(f'설정 파일 생성 오류: {e}')
@@ -53,7 +55,7 @@ class MissionComputer:
         보너스: setting.txt 파일이 있으면 해당 파일에 명시된 항목만 필터링합니다.
         """
         try:
-            # 총 메모리 크기를 sysctl 명령어로 가져옵니다 (바이트 단위)
+            # 총 메모리 크기를 sysctl 명령어로 가져오고 GB 단위로 환산
             mem_bytes = int(subprocess.check_output(['sysctl', '-n', 'hw.memsize']).strip())
             self.info = {
                 'operating_system': platform.system(),
@@ -87,6 +89,7 @@ class MissionComputer:
         top 명령어를 사용하여 CPU 사용량 (%)를 계산합니다.
         macOS에서 "top -l 1" 명령어로 현재 CPU idle 값을 얻고,
         100에서 idle 값을 빼서 전체 CPU 사용량을 계산합니다.
+        그 후 계산된 CPU 사용률을 반환
         """
         try:
             output = subprocess.check_output(['top', '-l', '1', '-n', '0']).decode('utf-8')
@@ -130,7 +133,8 @@ class MissionComputer:
 
     def get_mission_computer_load(self):
         """
-        시스템 부하 정보를 수집하고 JSON 형식으로 출력 및 반환합니다.
+        앞서 정의한 get_cpu_usage()와 get_memory_usage() 메소드를 호출하여 
+        시스템 부하 정보를 수집하고, JSON 형식으로 출력하여 반환
         수집 항목:
           - cpu_usage_percent: CPU 사용량 (%)
           - memory_usage_percent: 메모리 사용량 (%)
@@ -148,6 +152,7 @@ class MissionComputer:
         return load
 
 if __name__ == '__main__':
-    runComputer = MissionComputer()
+    runComputer = MissionComputer() #MissionComputer 클래스의 인스턴스를 runComputer라는 이름으로 생성
     runComputer.get_mission_computer_info()
     runComputer.get_mission_computer_load()
+    #메소드를 차례로 호출하여 시스템 정보와 부하 정보를 출력

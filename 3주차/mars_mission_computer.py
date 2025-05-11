@@ -13,6 +13,7 @@ class DummySensor:
             'mars_base_internal_oxygen': None,
         }
 
+
     def set_env(self):
         #각 센서 값을 지정된 범위 내에서 랜덤으로 생성하여 env_values에 저장
         self.env_values['mars_base_internal_temperature'] = round(random.uniform(18, 30), 2)
@@ -49,7 +50,7 @@ class DummySensor:
         return self.env_values
 
 # DummySensor 클래스 인스턴스를 생성
-ds = DummySensor()
+ds = DummySensor() 
 
 # 센서 데이터를 임의로 생성
 ds.set_env()

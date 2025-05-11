@@ -6,3 +6,10 @@ mars_base_internal_humidity: 54.58
 mars_base_external_illuminance: 646.44
 mars_base_internal_co2: 0.068
 mars_base_internal_oxygen: 6.64
+2025-03-31 19:31:19
+mars_base_internal_temperature: 29.99
+mars_base_external_temperature: 15.34
+mars_base_internal_humidity: 58.39
+mars_base_external_illuminance: 525.07
+mars_base_internal_co2: 0.028
+mars_base_internal_oxygen: 5.17
