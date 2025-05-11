@@ -1,6 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QGridLayout, QVBoxLayout
 from PySide6.QtCore import Qt
+# PyQt5가 macOS에서 Cocoa 플러그인 오류로 실행이 불가능하여 Qt 공식 라이브러리인 PySide6로 대체
 
 class Calculator(QWidget):
     def __init__(self):
