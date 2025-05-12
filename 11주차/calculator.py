@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QGridL
 from PySide6.QtCore import Qt
 # PyQt5가 macOS에서 Cocoa 플러그인 오류로 실행이 불가능하여 Qt 공식 라이브러리인 PySide6로 대체
 
+
 class Calculator(QWidget):
     def __init__(self):
         super().__init__()
@@ -10,21 +11,21 @@ class Calculator(QWidget):
         self.setFixedSize(390, 650)
         self.setStyleSheet("background-color: black;")
 
-        # ✅ 조건: 숫자, 연산자 등 입력값 저장용 변수
-        self.first_number = ''
-        self.second_number = ''
-        self.operator = ''
-        self.result = ''
+        # ✅ 조건: Calculator 클래스 정의 및 필드 초기화
+        self.first_number = ''  # 첫 번째 숫자
+        self.second_number = ''  # 두 번째 숫자
+        self.operator = ''  # 연산자
+        self.result = ''  # 결과 저장
 
         self.init_ui()
 
     def init_ui(self):
-        # ✅ 조건: 디스플레이 설정
+        # ✅ 조건: 숫자 입력 결과를 표시할 디스플레이 구성
         self.display = QLabel('0')
         self.display.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.display.setStyleSheet("color: white; font-size: 64px; padding: 30px 10px 10px 10px;")
 
-        # ✅ 조건: 버튼 구성 (아이폰 계산기 형태)
+        # ✅ 조건: 아이폰 계산기 스타일의 버튼 구성
         buttons = [
             ['AC', '+/-', '%', '÷'],
             ['7', '8', '9', '×'],
@@ -105,7 +106,7 @@ class Calculator(QWidget):
         }"""
 
     def button_clicked(self, key):
-        # ✅ 조건: 기능 메소드에 연결
+        # ✅ 조건: UI 버튼과 기능 연결
         actions = {
             'AC': self.reset,
             '+/-': self.toggle_sign,
@@ -123,25 +124,30 @@ class Calculator(QWidget):
         self.update_display()
 
     def append_number(self, num):
-        # ✅ 조건: 숫자 누적 입력
+        # ✅ 조건: 숫자키 입력 시 누적
+        if self.result:
+            self.first_number = ''
+            self.result = ''
+
         if self.operator:
             self.second_number += num
         else:
             self.first_number += num
 
     def append_dot(self):
-        # ✅ 조건: 소수점 중복 입력 방지
+        # ✅ 조건: 소수점 중복 방지
         target = self.second_number if self.operator else self.first_number
         if '.' not in target:
             self.append_number('.')
 
     def set_operator(self, op):
-        # ✅ 조건: 연산자 저장
-        if self.first_number:
-            self.operator = op
+        # ✅ 조건: 사칙연산 연산자 저장
+        if self.second_number:
+            self.equal()
+        self.operator = op
 
     def reset(self):
-        # ✅ 조건: AC 버튼 초기화
+        # ✅ 조건: AC 키 동작 구현
         self.first_number = ''
         self.second_number = ''
         self.operator = ''
@@ -162,7 +168,7 @@ class Calculator(QWidget):
                 self.first_number = target
 
     def percent(self):
-        # ✅ 조건: 퍼센트 계산
+        # ✅ 조건: 퍼센트 기능
         try:
             target = float(self.second_number if self.operator else self.first_number)
             target /= 100
@@ -173,7 +179,7 @@ class Calculator(QWidget):
         except:
             self.result = 'Error'
 
-    # ✅ 조건: 사칙연산 메소드 구현
+    # ✅ 조건: 사칙연산 메소드 정의
     def add(self, a, b): return a + b
     def subtract(self, a, b): return a - b
     def multiply(self, a, b): return a * b
@@ -183,7 +189,7 @@ class Calculator(QWidget):
         return a / b
 
     def equal(self):
-        # ✅ 조건: 결과 계산 및 예외처리 (0으로 나누기 포함)
+        # ✅ 조건: equal 기능 및 예외 처리
         try:
             a = float(self.first_number)
             b = float(self.second_number)
@@ -193,7 +199,7 @@ class Calculator(QWidget):
                 '×': self.multiply,
                 '÷': self.divide
             }
-            self.result = str(round(operations[self.operator](a, b), 6))  # ✅ 보너스: 소수점 6자리 반올림
+            self.result = str(round(operations[self.operator](a, b), 6))  # ✅ 보너스: 소수점 6자리 이하 반올림
             self.first_number = self.result
             self.second_number = ''
             self.operator = ''
@@ -203,8 +209,16 @@ class Calculator(QWidget):
             self.result = 'Error'
 
     def update_display(self):
-        # ✅ 조건: 결과 또는 현재 입력값 화면에 표시
-        text = self.result or self.second_number or self.first_number or '0'
+        # ✅ 조건: 현재 수식 또는 결과 표시
+        if self.result:
+            text = f"{self.first_number}"
+        elif self.operator and self.second_number:
+            text = f"{self.first_number}{self.operator}{self.second_number}"
+        elif self.operator:
+            text = f"{self.first_number}{self.operator}"
+        else:
+            text = self.first_number or '0'
+
         length = len(text)
         font_size = 64 if length < 10 else max(20, 64 - (length - 9) * 4)  # ✅ 보너스: 폰트 크기 자동 조정
         self.display.setStyleSheet(f"color: white; font-size: {font_size}px; padding: 30px 10px 10px 10px;")
