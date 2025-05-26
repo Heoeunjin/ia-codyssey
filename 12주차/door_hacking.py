@@ -14,7 +14,8 @@ def unlock_zip(zip_path='emergency_storage_key.zip', output_file='password.txt')
     - 성공 시 password.txt에 저장
     '''
     
-    charset = string.ascii_lowercase + string.digits  # ✅ 소문자 + 숫자
+    charset = string.ascii_lowercase + string.digits  
+    # ✅ 소문자 + 숫자, 암호에 사용할 수 있는 모든 문자 조합의 문자 집합 의미
     max_length = 6
 
     try:
