@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우주 해적단 - Space Pirates</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid #4a9eff;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin: 0;
+            background: linear-gradient(45deg, #4a9eff, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #cccccc;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(74, 158, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .section h2 {
+            color: #4a9eff;
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+        
+        .pirate-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .pirate-list li {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .pirate-list li strong {
+            color: #ff6b6b;
+        }
+        
+        .ship-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid rgba(74, 158, 255, 0.3);
+        }
+        
+        .ship-info h3 {
+            color: #4a9eff;
+            margin-top: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid #4a9eff;
+            color: #cccccc;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars">
+        <div class="star" style="top: 10%; left: 20%; width: 2px; height: 2px; animation-delay: 0s;"></div>
+        <div class="star" style="top: 20%; left: 80%; width: 1px; height: 1px; animation-delay: 0.5s;"></div>
+        <div class="star" style="top: 30%; left: 40%; width: 3px; height: 3px; animation-delay: 1s;"></div>
+        <div class="star" style="top: 50%; left: 10%; width: 2px; height: 2px; animation-delay: 1.5s;"></div>
+        <div class="star" style="top: 70%; left: 90%; width: 1px; height: 1px; animation-delay: 0.3s;"></div>
+        <div class="star" style="top: 80%; left: 60%; width: 2px; height: 2px; animation-delay: 0.8s;"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🏴‍☠️ 우주 해적단 🏴‍☠️</h1>
+            <p>Space Pirates - The Most Feared Crew in the Galaxy</p>
+            <p>은하계에서 가장 두려워받는 해적단에 오신 것을 환영합니다!</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>👥 주요 멤버</h2>
+                <ul class="pirate-list">
+                    <li><strong>캡틴 스카이워커</strong> - 함장이자 최고 지휘관</li>
+                    <li><strong>네비게이터 루나</strong> - 항해사이자 별자리 전문가</li>
+                    <li><strong>엔지니어 스파크</strong> - 함선 정비 및 무기 개발</li>
+                    <li><strong>파일럿 제로</strong> - 최고의 조종사</li>
+                    <li><strong>해커 사이버</strong> - 정보 수집 및 시스템 침입</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>🚀 우리의 함선</h2>
+                <div class="ship-info">
+                    <h3>스타쉽 "블랙홀"</h3>
+                    <p>우주 해적단의 주력 함선으로, 은하계에서 가장 빠르고 강력한 함선 중 하나입니다.</p>
+                    <ul>
+                        <li>최대 속도: 광속의 99.9%</li>
+                        <li>무장: 양자 캐논, 레이저 터렛</li>
+                        <li>방어: 에너지 실드, 스텔스 모드</li>
+                    </ul>
+                </div>
+                
+                <div class="ship-info">
+                    <h3>정찰선 "섀도우"</h3>
+                    <p>은밀한 정찰과 정보 수집을 위한 소형 함선입니다.</p>
+                    <ul>
+                        <li>특징: 완전 은신 기능</li>
+                        <li>장비: 고성능 스캐너</li>
+                        <li>승무원: 2명</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>⚔️ 우리의 활동</h2>
+            <p>우주 해적단은 은하계의 자유를 위해 싸우는 정의로운 해적들입니다. 우리는:</p>
+            <ul class="pirate-list">
+                <li>억압받는 행성들을 해방시킵니다</li>
+                <li>불의한 제국에 맞서 싸웁니다</li>
+                <li>은하계의 평화를 위해 노력합니다</li>
+                <li>보물을 찾아 모험을 떠납니다</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 우주 해적단 - Space Pirates</p>
+            <p>이 웹사이트는 Python HTTP 서버로 구동됩니다</p>
+            <p>포트: 8080 | 서버: web_server.py</p>
+        </div>
+    </div>
+</body>
+</html>
