@@ -102,9 +102,7 @@ class KbsNewsCrawler:
         
         # 다양한 뉴스 사이트 URL들 (KBS 접근이 어려운 경우 대안)
         urls = [
-            'http://news.kbs.co.kr/news/list.do?mcd=0001',  # KBS 일반뉴스
-            'https://news.naver.com/main/home.naver',  # 네이버 뉴스 (대안)
-            'https://www.yna.co.kr/',  # 연합뉴스 (대안)
+            'http://news.kbs.co.kr/news/list.do?mcd=0001'
         ]
         
         all_headlines = []
