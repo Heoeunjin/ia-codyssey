@@ -1,4 +1,5 @@
-created_at,id,status,title,updated_at
-2025-11-13T09:08:20Z,1,in_progress,첫 번째,2025-11-13T09:12:55Z
-2025-11-13T09:08:20Z,2,in_progress,두 번째,
-2025-11-13T09:08:20Z,3,completed,세 번째,
+created_at,description,id,status,title,updated_at
+2025-11-13T09:08:20Z,,1,in_progress,첫 번째,2025-11-13T09:12:55Z
+2025-11-13T09:08:20Z,,2,in_progress,두 번째,
+2025-11-13T09:08:20Z,,3,completed,세 번째,
+2025-11-13T10:48:53Z,수정된 설명,4,completed,수정된 제목,2025-11-13T10:48:53Z
